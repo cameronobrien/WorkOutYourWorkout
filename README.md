@@ -1,1 +1,6 @@
 # Work Out Your Workout!
+
+Work Out Your Workout is a tool made to fill an open market niche in the land of workout coaching and exercise programming. There is a lack of tools that can generate a personalized workout plan for the end user for free, and profiteering on the coaching market continues to rise. Work Out Your Workout aims to fill this slot, by providing the user a way to create free workout plans personalized to their goals and needs via algorithimic generation using Python 3.6, with the Flask framework and an SQLite3 Database.
+
+<h3>How Does It Work?</h3>
+Work Out Your Workout (or WOYW for short) uses a back-end combination of Python 3.6 with the Flask Framework and SQLite3 to create a powerful database system which maintains a table of workouts. Within this database, you could maintain tables for several different muscle groups, such as biceps, triceps, shoulders, etc. and when the user inputs the desired muscle groups they want to work, the table will then sort thorough all the groups, and select workouts that meet all the users needs without having duplicates, and assign reps, weight, and set amount based on user input. WOYW also uses the Bootstrap framework with a bit of CSS and Javascript for the front-end.
