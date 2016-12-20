@@ -4,6 +4,7 @@ from flask import Flask
 
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 APP_STATIC = os.path.join(APP_ROOT, 'static')
