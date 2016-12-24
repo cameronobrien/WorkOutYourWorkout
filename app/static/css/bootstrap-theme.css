@@ -212,7 +212,7 @@ fieldset[disabled] .btn-xl.active {
     border-radius: 3px;
   }
   .navbar-default.navbar-shrink {
-    background-color: #222;
+    background-color: #303030;
     padding: 10px 0;
   }
   .navbar-default.navbar-shrink .navbar-brand {
@@ -249,7 +249,8 @@ header .intro-text .intro-heading {
   line-height: 50px;
   margin-bottom: 25px;
   text-align: center;
-  color: #777777;
+  color: #FFF;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 @media (min-width: 768px) {
   header .intro-text {
@@ -286,33 +287,33 @@ section h3.section-subheading {
     padding: 150px 0;
   }
 }
-section#joining-us {
-  background-color: #222;
+section#how-work {
+  background-color: #303030;
   background-position: center;
   background-repeat: no-repeat;
 }
-section#joining-us .section-heading {
+section#how-work .section-heading {
   color: white;
 }
-section#joining-us .form-group {
+section#how-work .form-group {
   margin-bottom: 25px;
 }
 
-.team-member {
+.tech-used {
   text-align: center;
   margin-bottom: 50px;
 }
-.team-member img {
+.tech-used img {
   margin: 0 auto;
   border: 7px solid white;
 }
-.team-member h4 {
+.tech-used h4 {
   color: white;
   margin-top: 25px;
   margin-bottom: 0;
   text-transform: none;
 }
-.team-member p {
+.tech-used p {
   margin-top: 0;
 }
 
