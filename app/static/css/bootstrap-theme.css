@@ -287,16 +287,28 @@ section h3.section-subheading {
     padding: 150px 0;
   }
 }
-section#how-work {
+section#how-work  {
   background-color: #303030;
   background-position: center;
   background-repeat: no-repeat;
 }
-section#how-work .section-heading {
+section#how-work .section-heading  {
   color: white;
 }
 section#how-work .form-group {
   margin-bottom: 25px;
+}
+
+section#how-to  {
+  background-color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+section#how-to .section-heading  {
+  color: white;
+}
+section#how-to .form-group {
+  margin-bottom: 5px;
 }
 
 .tech-used {
