@@ -1,0 +1,21 @@
+.login {
+  background: #0080ff;
+  font-family:  "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.login p.registration-message {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  margin: 15px 0 40px;
+}
+.login .logo {
+  display: block;
+  height: 75px;
+  padding-top: 40px;
+  margin: 0 auto 30px;
+}

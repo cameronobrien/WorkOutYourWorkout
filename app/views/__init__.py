@@ -1,7 +1,9 @@
 from . import (
-    index
+    index,
+    auth
 )
 
 _page_locations = [
     'Home'
+    'Login'
 ]
