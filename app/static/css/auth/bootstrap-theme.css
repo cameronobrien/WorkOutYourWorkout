@@ -1,11 +1,11 @@
-.login {
-  background: #0080ff;
-  font-family:  "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+body {
+  background: #303030;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
 }
 
-.login p.registration-message {
+.registration-message {
   font-size: 22px;
   line-height: 28px;
   font-weight: 400;
@@ -13,7 +13,7 @@
   color: white;
   margin: 15px 0 40px;
 }
-.login .logo-login {
+.logo-login {
   display: block;
   height: 75px;
   padding-top: 40px;
