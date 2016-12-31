@@ -9,3 +9,6 @@ def auth():
         'auth/index.html',
         page_location="Login"
     )
+# @app.route('/auth/register', methods=['GET','POST'])
+# http://flask.pocoo.org/docs/0.12/patterns/sqlalchemy/#sqlalchemy-pattern
+

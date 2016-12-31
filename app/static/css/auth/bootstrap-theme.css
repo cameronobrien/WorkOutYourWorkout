@@ -3,6 +3,7 @@ body {
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
+  text-color: #FFF
 }
 
 .registration-message {
@@ -18,4 +19,18 @@ body {
   height: 75px;
   padding-top: 40px;
   margin: 0 auto 30px;
+}
+button.sign-in {
+  background-color: green;
+  border: 0px;
+  font-size: 22px;
+  paddding: 5;
+}
+span.button-text {
+  color: #FFF;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: left;
 }

@@ -12,11 +12,33 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename="css/auth/bootstrap-3_local.min.css") }}"> --> <!-- development -->
     <link rel="stylesheet" href="{{ url_for('static', filename="css/auth/bootstrap-theme.css") }}">
 </head>
 <body id="login">
-    <img class="logo-login" height="35" src="../static/css/auth/img/icon.png" alt="WOYW logo">
-    <p class="registration-message">Log in to Work Out Your Workout</p>
+    <div class="container">
+        <img class="logo-login" height="35" src="../static/css/auth/img/icon.png" alt="WOYW logo">
+        <p class="registration-message">Log In to Work Out Your Workout</p>
+        <!-- Form stuff here -->email<br>password
+        <br>
+        <button type="button" class="sign-in" >
+            <span class="button-text">Sign In</span>
+        </button>
+        <br>
+        <a class="forgot-password" href="auth/forgot_pass">Forgot password?</a>
+        <br>
+        <a class="sign-up" href="auth/register">Don't have an account? Sign up</a>
+    </div>
 
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+                <p class="copyright">Work Out Your Workout © 2016</p>
+			</div>
+		</div>
+	</div>
+</footer>
 </body>
 </html>
