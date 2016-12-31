@@ -8,5 +8,5 @@ from app import app
 def index():
     return render_template(
         'index/index.html',
-        page_location="Home"
+        page_title="Home"
     )
