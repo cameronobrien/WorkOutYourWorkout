@@ -1,7 +1,8 @@
 # Created by https://www.gitignore.io/api/pycharm
 
-# Python #
-*/__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
 
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
