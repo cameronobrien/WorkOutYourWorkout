@@ -11,8 +11,8 @@ m = hashlib.sha512()
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if not current_user.is_authenticated:
-        return redirect(url_for('login'))
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
 
     form = LoginForm()
 
@@ -24,7 +24,7 @@ def login():
             return redirect(url_for('dashboard'))
 
     return render_template(
-        'login.html',
+        'auth/index.html',
         form=form,
     )
 
@@ -37,7 +37,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/register')
+@app.route('/register' ,methods=['GET', 'POST'])
 def register():
     global m
     if current_user.is_authenticated:
@@ -52,7 +52,15 @@ def register():
             created_on = get_current_time(),
             _password = m.update(form.password.data.encode('utf-8'))
         )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect(url_for('index'))
 
+    return render_template(
+        'auth/index.html',
+        form=form,
+    )
 
 
 

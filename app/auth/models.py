@@ -6,12 +6,7 @@ m = hashlib.sha512()
 
 
 class User(db.Model, UserMixin):
-    def __init__(self):
-
-
     __tablename__ = "user"
-
-    
 
     def __repr__(self):
         return '<User %r>' % self.user_name
