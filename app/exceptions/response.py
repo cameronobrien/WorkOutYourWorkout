@@ -35,7 +35,7 @@ def make_data_resp(data, msg=None):
 def make_error_resp(msg, err_type=None, code=400):
     response = {
         'errors': {
-            'message': msg or "Something is horribly wrong!",
+            'message': msg,
             'type': err_type,
             'more info': ''
         }
@@ -48,6 +48,7 @@ def make_form_error_resp(form, msg=None):
     if not msg:
         msg = form.errors
     return make_error_resp(msg=msg, err_type=err_type, code=422)
+
 
 
 def make_exception_resp(exception, err_type=None, code=500):

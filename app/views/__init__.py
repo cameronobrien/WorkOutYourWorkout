@@ -1,6 +1,7 @@
 from . import (
     index,
-    auth
+    auth,
+    controller
 )
 
 _page_locations = [

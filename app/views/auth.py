@@ -1,11 +1,9 @@
-# Users API for authentication
-'''  
+"""
    Users API for authentication
-'''  
-from flask import (Blueprint, render_template, current_app, request,  
-                   flash, url_for, redirect, session, abort, jsonify)
+"""
+from flask import session, render_template
 
-from flask_login import login_required, login_user, current_user, logout_user, confirm_login, login_fresh
+from flask_login import login_required, login_user, current_user, logout_user
 from app.exceptions import response
 from app import db, app
 from app.models.user import User
@@ -13,22 +11,23 @@ from app.forms.admin.accounts.login import LoginForm
 from app.forms.admin.accounts.register import RegistrationForm
 
 
-@app.route('/auth/verify_auth', methods=['GET'])
+@app.route('/auth/verify_auth', methods=['GET', 'POST'])
 @login_required
 def verify_auth():
-    return response.make_data_resp(data=current_user.to_json())
+    # return response.make_data_resp(data=current_user.to_json())
+    return render_template('auth/index.html')
 
 
-@app.route('/auth/login', methods=['POST'])
+@app.route('/auth/login', methods=['GET', 'POST'])
 def login():  
     """ POST only operation. check login form. Log user in """
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return response.make_success_resp(msg="You are already logged in")
 
     form = LoginForm()
     if form.validate_on_submit():
         user, authenticated = User.authenticate(form.login.data,
-                                              form.password.data)
+                                                form.password.data)
         if user:
             if authenticated:
                 login_user(user, remember=form.remember_me.data)
@@ -41,7 +40,7 @@ def login():
     return response.make_form_error_resp(form=form)
 
 
-@app.route('/auth/logout', methods=['POST'])
+@app.route('/auth/logout', methods=['GET', 'POST'])
 @login_required
 def logout():  
     """ logout user """
@@ -50,9 +49,9 @@ def logout():
     return response.make_success_resp(msg="You have successfully logged out")
 
 
-@app.route('/auth/signup', methods=['POST'])
+@app.route('/auth/signup', methods=['GET', 'POST'])
 def signup():  
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return response.make_success_resp("You're already signed up")
 
     form = RegistrationForm()

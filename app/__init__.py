@@ -1,24 +1,26 @@
 import os
 
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CsrfProtect
-from flask_login import LoginManager
 
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
+
 login_manager = LoginManager()
-login_manager.login_view = 'auth.index'
-login_manager.refresh_view = 'auth.index'
+login_manager.login_view = 'auth/verify_auth'
+login_manager.refresh_view = 'auth/verify_auth'
 
 
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(id)
 login_manager.init_app(app)
+
 
 csrf = CsrfProtect()
 csrf.init_app(app)

@@ -11,6 +11,8 @@
    <title>{% block title %}{{ page_title}}{% endblock %}</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+   <!-- <link rel="Shortcut Icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon"> -->
 
    {% block css %}
 
@@ -21,12 +23,11 @@
    {% endblock %}
 
    {% block js_top %}
-   <!--<script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>!-->
+   <!-- <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script> -->
    {% endblock %}
 </head>
 
 <body>
-
    {% block main_body %}
    {% endblock %}
 
@@ -34,8 +35,6 @@
    {% block js_btm %}
 
    {% endblock %}
-
-
 
 
 </body>
