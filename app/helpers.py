@@ -59,3 +59,8 @@ class JsonSerializer(object):
         for key in hidden:
             rv.pop(key, None)
         return rv
+
+
+def configure_blueprints(app, blueprints):
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)

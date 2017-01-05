@@ -79,17 +79,17 @@ function verifyAuth(callback) {
    return $.get(url);
 }
 
-function login(loginData){  
+function login(loginData){
    var url = '/auth/login';
    return $.post(url, loginData);
 }
 
-function logout() {  
+function logout() {
    var url = '/auth/logout';
    return $.post(url);
 }
 
-function signup(signupData) {  
+function signup(signupData) {
    var url = '/auth/signup';
    return $.post(url, signupData);
 }

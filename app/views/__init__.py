@@ -1,8 +1,8 @@
 from . import (
     index,
-    auth,
-    controller
+    auth
 )
+
 
 _page_locations = [
     'Home'

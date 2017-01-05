@@ -12,8 +12,8 @@ db = SQLAlchemy(app)
 
 
 login_manager = LoginManager()
-login_manager.login_view = 'auth/verify_auth'
-login_manager.refresh_view = 'auth/verify_auth'
+login_manager.login_view = ''
+login_manager.refresh_view = ''
 
 
 @login_manager.user_loader
@@ -30,3 +30,5 @@ APP_STATIC = os.path.join(APP_ROOT, 'static')
 
 from app import views
 from app.models.user import User
+
+
