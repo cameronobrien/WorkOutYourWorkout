@@ -11,8 +11,10 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
-login_manager.login_view = 'frontend.index'
-login_manager.refresh_view = 'frontend.index'
+login_manager.login_view = 'auth.index'
+login_manager.refresh_view = 'auth.index'
+
+
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(id)

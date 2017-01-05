@@ -1,12 +1,12 @@
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_login import UserMixin
-from app.helpers import JSONSerializer, get_current_time
+from app.helpers import JsonSerializer, get_current_time
 import app.constants
 from app import db
 
 
-class UserJsonSerializer(JSONSerializer):
+class UserJsonSerializer(JsonSerializer):
     __json_public__ = ['id', 'email', 'username']
     __json_modifiers__ = {
         'role_code': ['role', (lambda code: app.constants.USER_ROLE[code])]
@@ -14,7 +14,7 @@ class UserJsonSerializer(JSONSerializer):
     }
 
 
-class User(db.model, UserMixin, UserJsonSerializer):
+class User(db.Model, UserMixin, UserJsonSerializer):
     __tablename__ = "user"
 
     def __repr__(self):

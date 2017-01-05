@@ -75,21 +75,21 @@ function showLoggedout() {
 
 // API calls
 function verifyAuth(callback) {  
-   var url = '/api/auth/verify_auth';
+   var url = '/auth/verify_auth';
    return $.get(url);
 }
 
 function login(loginData){  
-   var url = '/api/auth/login';
+   var url = '/auth/login';
    return $.post(url, loginData);
 }
 
 function logout() {  
-   var url = '/api/auth/logout';
+   var url = '/auth/logout';
    return $.post(url);
 }
 
 function signup(signupData) {  
-   var url = '/api/auth/signup';
+   var url = '/auth/signup';
    return $.post(url, signupData);
 }

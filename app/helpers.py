@@ -1,4 +1,3 @@
-import os
 from datetime import datetime, timedelta
 from flask.json import JSONEncoder as BaseJSONEncoder
 
@@ -7,7 +6,7 @@ def get_current_time():
     return datetime.utcnow
 
 
-def get_current_time_plus(days=0, hours=0, minutes=0, seconds =0):
+def get_current_time_plus(days=0, hours=0, minutes=0, seconds=0):
     return get_current_time() + timedelta(days=days, hours=hours, minutes=minutes, seconds=seconds)
 
 
@@ -21,7 +20,7 @@ class JSONEncoder(BaseJSONEncoder):
         return super(JSONEncoder, self).default(obj)
 
 
-class JSONSerializer(Object):
+class JsonSerializer(object):
     """
         A mixin that can be used to mark a SQLAlchemy model class which
         implements a func `to_json` method. The func `to_json` method is used
