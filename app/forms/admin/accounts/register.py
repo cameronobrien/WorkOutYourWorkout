@@ -9,10 +9,14 @@ class RegistrationForm(Form):
                             message="Username can only contain letters and numbers"))
     email = EmailField('Email Address', validators=[Email()])
     password = PasswordField('Password', [
+        validators.Length(min=8, max=36),
         validators.data_required(),
-        validators.equal_to('confirm', message="Passwords must match.")
+        validators.equal_to('confirm', message="Passwords must match.",
+        )
     ])
-    confirm = PasswordField('Confirm password.')
+    confirm = PasswordField('Confirm password.'), [
+        validators.DataRequired()
+    ]
     accept_tos = BooleanField('I accept the ToS', [validators.data_required()])
     submit = SubmitField("Register")
 
