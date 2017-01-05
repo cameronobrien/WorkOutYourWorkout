@@ -11,24 +11,26 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 
-login_manager = LoginManager()
-login_manager.login_view = ''
-login_manager.refresh_view = ''
+lm = LoginManager()
+lm.login_view = ''
+lm.refresh_view = ''
 
 
-@login_manager.user_loader
+@lm.user_loader
 def load_user(id):
-    return User.query.get(id)
-login_manager.init_app(app)
+    return auth.models.User.query.get(id)
+lm.init_app(app)
 
 
 csrf = CsrfProtect()
 csrf.init_app(app)
 
+from app.admin import models, forms, views
+from app.index import models, forms, views
+from app.auth import models, forms, views
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 APP_STATIC = os.path.join(APP_ROOT, 'static')
 
-from app import views
-from app.models.user import User
 
 
