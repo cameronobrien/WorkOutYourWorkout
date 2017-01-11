@@ -25,9 +25,10 @@ lm.init_app(app)
 csrf = CsrfProtect()
 csrf.init_app(app)
 
-from app.admin import models, forms, views
-from app.index import models, forms, views
-from app.auth import models, forms, views
+from app.admin import models, views, forms
+from app.auth import models, views, forms
+from app.index import models, views, forms
+
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 APP_STATIC = os.path.join(APP_ROOT, 'static')

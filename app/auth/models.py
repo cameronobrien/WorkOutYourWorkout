@@ -1,8 +1,6 @@
-import hashlib
 from flask_login import UserMixin
-from app.helpers import get_current_time
+from app.helpers import get_current_time, hash_password
 from app import db
-m = hashlib.sha512()
 
 
 class User(db.Model, UserMixin):
@@ -11,29 +9,30 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '<User %r>' % self.user_name
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_name = db.Column(db.String(25), index=True, unique=True, nullable=False)
     email = db.Column(db.String(50), index=True, unique=True, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, default=get_current_time())
-    _password = db.Column('password', db.String(64), nullable=False)
+    password = db.Column('password', db.String(256), nullable=False)
+
+    def __init__(self, user_name, email, password):
+        self.user_name = user_name
+        self.email = email
+        self.password = hash_password(password)
+        self.created_on = get_current_time()
 
     def get_password(self):
-        return self._password
+        return self.password
 
     def set_password(self, password):
-        m = hashlib.sha512()
-        m.update(password.encode('utf-8'))
-
-    password = db.synonym('_password',
-                          descriptor=property(get_password,
-                                              set_password))
+        self.password = hash_password(password)
 
     @classmethod
-    def authenticate(cls, user_name, password):
+    def authenticate(cls, user_name, password, self):
         user = User.query.filter(db.or_(User.user_name == user_name)).first()
 
         if user:
-            authenticated = user.check_password(password)
+            authenticated = user.check_password(password, self.password)
         else:
             authenticated = False
         return user, authenticated

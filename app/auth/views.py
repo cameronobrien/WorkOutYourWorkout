@@ -1,12 +1,10 @@
 from flask import render_template, url_for, redirect
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, current_user
 
-from app import app, db, lm
+from app import app, db
 from app.auth.forms import LoginForm, RegisterForm
 from app.auth.models import User
-from app.helpers import get_current_time
-import hashlib
-m = hashlib.sha512()
+from app.helpers import hash_password
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -19,7 +17,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter(username=form.login.data).first()
 
-        if user and user.password == form.password.data:
+        if user and user.password == hash_password(form.password.data):
             login_user(user)
             return redirect(url_for('dashboard'))
 
@@ -37,9 +35,8 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/register' ,methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    global m
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
@@ -47,10 +44,9 @@ def register():
 
     if form.validate_on_submit():
         user = User(
-            user_name = form.username.data,
-            email = form.email.data,
-            created_on = get_current_time(),
-            _password = m.update(form.password.data.encode('utf-8'))
+            user_name=form.username.data,
+            email=form.email.data,
+            password=hash_password(form.data.password)
         )
         db.session.add(user)
         db.session.commit()
@@ -61,6 +57,3 @@ def register():
         'auth/index.html',
         form=form,
     )
-
-
-

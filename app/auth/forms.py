@@ -13,7 +13,7 @@ class RegisterForm(FlaskForm):
     username = StringField('user_name', [validators.Length(min=4, max=25)], )
     email = EmailField('email', validators=[Email()])
     password = PasswordField('password', [
-        validators.Length(min=8, max=36),
+        validators.Length(min=6, max=36),
         validators.data_required(),
     ])
     confirm = PasswordField('confirm'), [
