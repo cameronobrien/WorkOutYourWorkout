@@ -1,10 +1,18 @@
 from flask import render_template, url_for, redirect
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 from app import app, db
 from app.auth.forms import LoginForm, RegisterForm
 from app.auth.models import User
 from app.helpers import hash_password
+
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template(
+        'index/dashboard.html'
+    )
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -22,7 +30,7 @@ def login():
             return redirect(url_for('dashboard'))
 
     return render_template(
-        'auth/index.html',
+        'auth/register.html',
         form=form,
     )
 
@@ -46,12 +54,12 @@ def register():
         user = User(
             user_name=form.username.data,
             email=form.email.data,
-            password=hash_password(form.data.password)
+            password=hash_password(form.password.data)
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
 
     return render_template(
         'auth/index.html',
