@@ -30,7 +30,7 @@ def login():
             return redirect(url_for('dashboard'))
 
     return render_template(
-        'auth/register.html',
+        'auth/login.html',
         form=form,
     )
 
@@ -62,6 +62,6 @@ def register():
         return redirect(url_for('dashboard'))
 
     return render_template(
-        'auth/index.html',
+        'auth/register.html',
         form=form,
     )
