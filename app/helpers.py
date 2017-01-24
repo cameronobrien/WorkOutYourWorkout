@@ -3,7 +3,7 @@ import bcrypt
 
 
 def get_current_time():
-    return datetime.utcnow
+    return datetime.utcnow()
 
 
 def get_current_time_plus(days=0, hours=0, minutes=0, seconds=0):

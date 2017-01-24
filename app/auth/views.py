@@ -23,11 +23,17 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user = User.query.filter(username=form.login.data).first()
+        user = User.query.filter(User.user_name == form.login.data).first()
 
+        print(form.login.data)
+        print(form.password.data)
+        print(user.password)
+        print(hash_password(form.password.data))
         if user and user.password == hash_password(form.password.data):
             login_user(user)
             return redirect(url_for('dashboard'))
+        else:
+            print("you fucked up")
 
     return render_template(
         'auth/login.html',
@@ -49,7 +55,11 @@ def register():
         return redirect(url_for('index'))
 
     form = RegisterForm()
-
+    if form.is_submitted():
+        print("submitted")
+    if form.validate():
+        print("valid")
+    print(form.errors)
     if form.validate_on_submit():
         user = User(
             user_name=form.username.data,

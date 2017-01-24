@@ -26,24 +26,20 @@
    <hr>
    <div id='signup-view' class='well'>
       <h3> Sign up a new user!</h3>
-      <form id='signup-form'>
-         <div class="form-group">
-            <label>Username</label>
-            <input name='user_name' class="form-control">
-         </div>
-         <div class="form-group">
-            <label>Email</label>
-            <input name='email' class="form-control">
-         </div>
-         <div class="form-group">
-            <label>Password</label>
-            <input name='password' type="password" class="form-control">
-         </div>
-         <div class="form-group">
-            <label>Verify Password</label>
-            <input name='confirm' type="password" class="form-control">
-         </div>
-         <button type="submit" class="btn btn-primary">Login</button>
+      <form method="post" id="signup-form">
+          {{ form.csrf_token }}
+          {{ form.name }}
+          {{ form.hidden_tag() }}
+         <span id="login-bits"></span>
+          {{ form.username(class_='form-control', placeholder="Username",
+             required=form.username.flags.required) }}
+          {{ form.email(class_='form-control', placeholder="Email",
+             required=form.email.flags.required) }}
+          {{ form.password(class_='form-control', placeholder="Password",
+             required=form.password.flags.required) }}
+          {{ form.confirm(class_='form-control', placeholder="Confirm Password",
+             required=form.confirm.flags.required) }}
+         {{ form.submit(class_="btn btn-lg btn-primary btn-signin") }}
       </form>
    </div>
 </div>
@@ -62,7 +58,6 @@
 {% block js_btm %}
 <!-- Put javascript here !-->
 
-   <script src="/static/js/jquery.js"></script>
    <script src="/static/js/main.js"></script>
 
 {% endblock %}

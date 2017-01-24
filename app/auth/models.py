@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     user_name = db.Column(db.String(25), index=True, unique=True, nullable=False)
     email = db.Column(db.String(50), index=True, unique=True, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, default=get_current_time())
-    password = db.Column('password', db.String(256), nullable=False)
+    password = db.Column(db.String(256), nullable=False, index=True)
 
     def __init__(self, user_name, email, password):
         self.user_name = user_name
