@@ -33,12 +33,16 @@
          <span id="login-bits"></span>
           {{ form.username(class_='form-control', placeholder="Username",
              required=form.username.flags.required) }}
+          <br>
           {{ form.email(class_='form-control', placeholder="Email",
              required=form.email.flags.required) }}
+          <br>
           {{ form.password(class_='form-control', placeholder="Password",
              required=form.password.flags.required) }}
+          <br>
           {{ form.confirm(class_='form-control', placeholder="Confirm Password",
              required=form.confirm.flags.required) }}
+          <br>
          {{ form.submit(class_="btn btn-lg btn-primary btn-signin") }}
       </form>
    </div>
