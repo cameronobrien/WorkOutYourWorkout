@@ -1,0 +1,49 @@
+Finish fixing the authentication features. 
+Major issues:
+	-Passwords do not seem to be hashing the same way with check_password 
+	 as they do on hashpw. salt=gensalt(12) is likely generating a new
+         salt everytime the helpers.py file is accessed. Maybe try a static
+         salt that you set yourself? *SOLUTION LOCATED*
+
+Work on the dashboard page.
+Things to remember:
+	-Needs to be lightweight and easy to use.
+	-Possible fields or portions of the page can be:
+	   -Avatar, name, etc on the top left "Welcome, $user!"
+           -A "feed" where you can see workouts friends generate and 
+           complete.
+           -An easy way to generate a new workout directly from the dashboard
+           -Edit profile, make new posts, etc
+	   -Navbar should include like search, friends, workouts, contact etc
+
+
+Create Database tables and models for workouts
+Structure:
+	-Exercise
+            -Neck
+	    -Traps
+	    -Shoulders
+	    -Chest
+            -Triceps
+            -Lats
+	    -Biceps
+	    -Middle Back
+            -Lower Back
+            -Forearm
+            -Abs
+            -Quads
+            -Glutes
+            -Hamstrings
+            -Calves
+	    -Compound (Olympic Lifts)
+Interface:
+	-User input:
+	    -Days per week(3, 4, 5, 6)
+                -Attempt to evenly space rest days for non-6 input
+            -Purpose of training (Strength, hypertrophy, cardio)
+		-5 reps for strength at higher weights, 8 reps for hypertrophy, 15+ for cardio
+                -85% 1RM for strength, 70% hypertrophy, 50% cardio
+            -1RM for compound lifts (squat, bench press, overhead press, deadlift)
+            	-1RM can save to profile for easy access at a later date
+            -If user just wants cardio with no weights, recommend a generic HIIT program
+            

@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from app.helpers import get_current_time, hash_password, salt
+from app.helpers import get_current_time, hash_password
 from app import db
 
 
@@ -14,11 +14,13 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), index=True, unique=True, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, default=get_current_time())
     password = db.Column(db.String(128), nullable=False)
+    salt = db.Column(db.String(128), nullable=False)
 
-    def __init__(self, user_name, email, password):
+    def __init__(self, user_name, email, password, user_salt):
         self.user_name = user_name
         self.email = email
-        self.password = hash_password(password, salt)
+        self.salt = user_salt
+        self.password = hash_password(password, user_salt)
         self.created_on = get_current_time()
 
     def get_password(self):
