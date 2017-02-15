@@ -1,3 +1,12 @@
+"""
+auth/forms
+~~~~~~~~~~
+
+:author: Cameron O'Brien
+:e-mail: cameron.o.j@gmail.com
+:github: @cameronobrien
+
+"""
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, validators, BooleanField, SubmitField
 from wtforms.fields.html5 import EmailField

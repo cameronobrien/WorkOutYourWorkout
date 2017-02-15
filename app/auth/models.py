@@ -1,4 +1,14 @@
+"""
+auth/models
+~~~~~~~~~~~
+
+:author: Cameron O'Brien
+:e-mail: cameron.o.j@gmail.com
+:github: @cameronobrien
+
+"""
 from flask_login import UserMixin
+
 from app.helpers import get_current_time, hash_password
 from app import db
 
@@ -16,7 +26,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(128), nullable=False)
     salt = db.Column(db.String(128), nullable=False)
 
-    def __init__(self, user_name, email, password, user_salt):
+    def __init__(self, user_name, email, user_salt, password):
         self.user_name = user_name
         self.email = email
         self.salt = user_salt
@@ -27,7 +37,7 @@ class User(db.Model, UserMixin):
         return self.password
 
     def set_password(self, password):
-        self.password = hash_password(password)
+        self.password = hash_password(password, self.salt)
 
     @classmethod
     def is_user_name_taken(cls, user_name):

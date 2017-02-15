@@ -1,3 +1,14 @@
+"""
+auth/views
+~~~~~~~~~~
+
+:author: Cameron O'Brien
+:e-mail: cameron.o.j@gmail.com
+:github: @cameronobrien
+
+"""
+import bcrypt
+
 from flask import render_template, url_for, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -5,7 +16,6 @@ from app import app, db
 from app.auth.forms import LoginForm, RegisterForm
 from app.auth.models import User
 from app.helpers import hash_password, check_password
-import bcrypt
 
 
 @app.route('/dashboard')
@@ -64,10 +74,11 @@ def register():
         print("valid")
     print(form.errors)
     if form.validate_on_submit():
+        user_salt = bcrypt.gensalt(12)
         user = User(
             user_name=form.username.data,
             email=form.email.data,
-            user_salt=bcrypt.gensalt(12),
+            user_salt=user_salt,
             password=hash_password(form.password.data, user_salt)
         )
         db.session.add(user)
