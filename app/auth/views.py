@@ -9,7 +9,7 @@ auth/views
 """
 import bcrypt
 
-from flask import render_template, url_for, redirect
+from flask import g, render_template, url_for, redirect
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app import app, db
@@ -18,13 +18,19 @@ from app.auth.models import User
 from app.helpers import hash_password, check_password
 
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    if not current_user.is_authenicated:
+    if not current_user.is_authenticated:
         return redirect(url_for('login'))
     return render_template(
-        'index/dashboard.html'
+        'index/dashboard.html',
+        user=g.user
     )
 
 
@@ -51,6 +57,7 @@ def login():
     return render_template(
         'auth/login.html',
         form=form,
+        user=g.user
     )
 
 
@@ -89,4 +96,5 @@ def register():
     return render_template(
         'auth/register.html',
         form=form,
+        user=g.user
     )

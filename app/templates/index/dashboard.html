@@ -9,6 +9,7 @@
 {% block css_style %}
 <!-- Put css here !-->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/index/dashboard.css" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block main_body %}
@@ -25,8 +26,13 @@
 <div class="container">
    <!-- Logged in view !-->
    <div id='logged-in-view'>
-      <h3> Welcome, <span></span>!</h3>
-      <button type="button" class="btn btn-success">I'm done. Log me out</button>
+       <div id="profile">
+           <h3>Pinned Workouts</h3>
+           <div id="photo"><img src="/static/css/index/img/testimg.png"></div>
+           <h5 class="text-muted">{{ user.user_name}}</h5>
+           <br>
+
+       </div>
    </div>
    <hr>
 </div>

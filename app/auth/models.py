@@ -8,7 +8,6 @@ auth/models
 
 """
 from flask_login import UserMixin
-
 from app.helpers import get_current_time, hash_password
 from app import db
 
@@ -24,7 +23,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), index=True, unique=True, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, default=get_current_time())
     password = db.Column(db.String(128), nullable=False)
-    salt = db.Column(db.String(128), nullable=False)
+    salt = db.Column(db.String(512), nullable=False)
 
     def __init__(self, user_name, email, user_salt, password):
         self.user_name = user_name
